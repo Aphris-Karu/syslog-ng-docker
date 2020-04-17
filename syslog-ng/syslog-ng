@@ -7,7 +7,7 @@
         delaycompress
         compress
         postrotate
-                invoke-rc.d syslog-ng reload > /dev/null
+                syslog-ng-ctl reload > /dev/null
         endscript
 }
 
@@ -20,7 +20,7 @@
         delaycompress
         compress
         postrotate
-                invoke-rc.d syslog-ng reload > /dev/null
+                syslog-ng-ctl reload > /dev/null
         endscript
 }
 
@@ -46,6 +46,6 @@
         delaycompress
         sharedscripts
         postrotate
-                invoke-rc.d syslog-ng reload > /dev/null
+                syslog-ng-ctl reload > /dev/null
         endscript
 }

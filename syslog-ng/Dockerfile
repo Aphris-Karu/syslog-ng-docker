@@ -12,6 +12,8 @@ RUN apt-get update -qq && apt-get install -y \
     syslog-ng
 
 ADD syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
+ADD start-syslog-ng.sh /start-syslog-ng.sh
+RUN chmod 755 /start-syslog-ng.sh
 
 RUN find /usr/lib/ -name 'libjvm.so*' | xargs dirname | tee --append /etc/ld.so.conf.d/openjdk-libjvm.conf
 RUN ldconfig
@@ -20,4 +22,4 @@ EXPOSE 514/udp
 EXPOSE 601/tcp
 EXPOSE 6514/tcp
 
-ENTRYPOINT ["/usr/sbin/syslog-ng", "-F"]
+ENTRYPOINT ["/start-syslog-ng.sh"]

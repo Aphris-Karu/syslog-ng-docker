@@ -13,7 +13,9 @@ RUN apt-get update -qq && apt-get install -y \
 
 ADD syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
 ADD start-syslog-ng.sh /start-syslog-ng.sh
+ADD syslog-ng /etc/logrotate.d/syslog-ng
 RUN chmod 755 /start-syslog-ng.sh
+RUN chmod 644 /etc/logrotate.d/syslog-ng
 
 RUN find /usr/lib/ -name 'libjvm.so*' | xargs dirname | tee --append /etc/ld.so.conf.d/openjdk-libjvm.conf
 RUN ldconfig

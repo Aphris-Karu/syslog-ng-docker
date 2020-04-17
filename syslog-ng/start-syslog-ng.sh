@@ -1,3 +1,3 @@
 #!/bin/sh
 service cron start
-/usr/sbin/syslog-ng -f
+/usr/sbin/syslog-ng -F
